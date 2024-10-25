@@ -26,7 +26,9 @@ while True:
     # OpenCV: Read frame from video
     ret, frame = cap.read()
     if not ret:
-        break
+        # Reset to the start of the video if the video ends
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        continue
 
     count += 1
     if count % 3 != 0:
